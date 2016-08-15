@@ -19,9 +19,20 @@
     <!-- <select id="selectUsersByName" parameterType="string" resultMap="userResultMap">
         select * from user where user.userName = #{userName}
     </select> -->
-
-    <select id="selectUsersByName" parameterType="string" resultType="User">
-        select * from user where user.userName = #{userName}
+    <resultMap id="userMap" type="User">
+        <id property="id" column="id" />
+        <result property="userName" column="userName"/>
+        <result property="userAge" column="userAge"/>
+        <result property="userAddress" column="userAddress"/>
+        <collection property="postList" ofType="Post" column="userid">
+            <id property="id" column="post_id" javaType="int" jdbcType="INTEGER"/>
+            <result property="title" column="title" javaType="string" jdbcType="VARCHAR"/>
+            <result property="content" column="content" javaType="string" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+    <select id="selectUsersByName" parameterType="string" resultMap="userMap">
+        select * from user u Inner Join Post p
+        on u.id = p.userid where u.userName = #{userName}
     </select>
 
     <!--执行增加操作的SQL语句。id和parameterType分别与IUserOperation接口中的addUser方法的名字和参数类型一致。

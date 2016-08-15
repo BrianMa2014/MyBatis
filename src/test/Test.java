@@ -1,3 +1,5 @@
+package test;
+import domain.Post;
 import domain.User;
 import inter.IUserOperation;
 import org.apache.ibatis.io.Resources;
@@ -51,8 +53,13 @@ public class Test {
                     .getMapper(IUserOperation.class);
             List<User> users = userOperation.selectUsersByName(userName);
             for (User user : users) {
-                System.out.println(user.getId() + ":" + user.getUserName()
-                        + ":" + user.getUserAddress());
+                System.out.println("Id:"+user.getId() + ",UserName:" + user.getUserName()
+                        + ",UserAddress:" + user.getUserAddress());
+                List<Post> posts = user.getPostList();
+                for(Post post : posts){
+                    System.out.println("PostId:"+post.getId()+
+                            ",Post Title:"+post.getTitle()+",PostContent:"+post.getContent());
+                }
             }
 
         } finally {
@@ -120,7 +127,7 @@ public class Test {
         try {
             Test test = new Test();
             // test.getUserByID(1);
-             test.getUserList("test1");
+             test.getUserList("summer");
 //             test.addUser();
             // test.updateUser();
             // test.deleteUser(6);
