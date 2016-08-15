@@ -1,6 +1,7 @@
 package test;
 import domain.Post;
 import domain.User;
+import inter.IPostOperation;
 import inter.IUserOperation;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -123,11 +124,24 @@ public class Test {
         }
     }
 
+    public void getPostById(int id) {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            IPostOperation postOperation = session
+                    .getMapper(IPostOperation.class);
+            Post post = postOperation.getPostById(id);
+            System.out.println("id:"+post.getId()+",title:"+post.getTitle()+",content:"+post.getContent()+",user:"+post.getUser().getUserName());
+        } finally {
+            session.close();
+        }
+    }
+
     public static void main(String[] args) {
         try {
             Test test = new Test();
             // test.getUserByID(1);
-             test.getUserList("summer");
+//             test.getUserList("summer");
+             test.getPostById(1);
 //             test.addUser();
             // test.updateUser();
             // test.deleteUser(6);

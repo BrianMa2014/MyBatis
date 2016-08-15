@@ -6,6 +6,7 @@ package domain;
 public class Post {
     private int id;
     private String title;
+    private User user;
     private String content;
 
     public int getId() {
@@ -30,5 +31,13 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
