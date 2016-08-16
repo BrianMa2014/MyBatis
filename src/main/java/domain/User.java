@@ -11,6 +11,7 @@ public class User {
     private int userAge;
     private String userAddress;
     private List<Post> postList;
+    private List<Group> groupList;
 
     public int getId() {
         return id;
@@ -55,5 +56,13 @@ public class User {
 
     public void setPostList(List<Post> postList) {
         this.postList = postList;
+    }
+
+    public List<Group> getGroupList() {
+        return groupList;
+    }
+
+    public void setGroupList(List<Group> groupList) {
+        this.groupList = groupList;
     }
 }

@@ -140,8 +140,8 @@ public class Test {
         try {
             Test test = new Test();
             // test.getUserByID(1);
-//             test.getUserList("summer");
-             test.getPostById(1);
+             test.getUserList("summer");
+//             test.getPostById(1);
 //             test.addUser();
             // test.updateUser();
             // test.deleteUser(6);

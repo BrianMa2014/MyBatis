@@ -29,6 +29,7 @@
             <result property="title" column="title" javaType="string" jdbcType="VARCHAR"/>
             <result property="content" column="content" javaType="string" jdbcType="VARCHAR"/>
         </collection>
+        <collection property="groupList" column="id" select="inter.IUserGroupOperation.getGroupsByUserId"/>
     </resultMap>
     <select id="selectUsersByName" parameterType="string" resultMap="userMap">
         select * from user u Inner Join Post p
@@ -50,4 +51,5 @@
     <delete id="deleteUser" parameterType="int">
         delete from user where id=#{id}
     </delete>
+
 </mapper>

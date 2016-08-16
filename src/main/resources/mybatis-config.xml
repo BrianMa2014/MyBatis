@@ -5,7 +5,7 @@
 <configuration>
     <settings>
         <setting name="cacheEnabled" value="true"/>
-        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--<setting name="lazyLoadingEnabled" value="true"/>-->
         <setting name="multipleResultSetsEnabled" value="true"/>
         <setting name="useColumnLabel" value="true"/>
         <setting name="useGeneratedKeys" value="false"/>
@@ -15,6 +15,8 @@
     <typeAliases>
         <typeAlias alias="User" type="domain.User"/>
         <typeAlias alias="Post" type="domain.Post"/>
+        <typeAlias alias="Group" type="domain.Group"/>
+        <typeAlias alias="UserGroup" type="domain.UserGroup"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -30,5 +32,7 @@
     <mappers>
         <mapper resource="mapper/User.xml"></mapper>
         <mapper resource="mapper/Post.xml"></mapper>
+        <mapper resource="mapper/Group.xml"></mapper>
+        <mapper resource="mapper/UserGroup.xml"></mapper>
     </mappers>
 </configuration>
